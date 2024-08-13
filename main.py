@@ -51,15 +51,13 @@ def main():
     import_platform_obj.login()
     # 开始同步
     last_sync_id = get_last_sync_id(export_platform)
-    while True:
-        activity_list = export_platform_obj.get_activity_list()
-        for activity in activity_list:
-            if activity['ride_id'] > last_sync_id:
-                fit_file = export_platform_obj.export_fit(activity['origin_activity'])
-                import_platform_obj.import_fit(fit_file, activity['title'])
-                last_sync_id = activity['ride_id']
-                set_last_sync_id(export_platform, last_sync_id)
-        time.sleep(60)
+    activity_list = export_platform_obj.get_activity_list()
+    for activity in activity_list:
+        if activity['ride_id'] > last_sync_id:
+            fit_file = export_platform_obj.export_fit(activity['origin_activity'])
+            import_platform_obj.import_fit(fit_file, activity['title'])
+            last_sync_id = activity['ride_id']
+            set_last_sync_id(export_platform, last_sync_id)
 
 
 if __name__ == '__main__':
