@@ -5,23 +5,6 @@ on:
     - cron: '0 0 */3 * *'
   watch:
     types: started
-  workflow_dispatch:
-    inputs:
-      exportPlatform:
-        description: 'Activities exported from:'
-        required: true
-        default: 'igpsport'
-        type: choice
-        options:
-          - igpsport
-          - onelap
-      importPlatform:
-        description: 'Activities to be imported into:'
-        required: true
-        default: 'imxingzhe'
-        type: choice
-        options:
-          - imxingzhe
 
 jobs:
   build:
