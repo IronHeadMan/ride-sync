@@ -1,6 +1,10 @@
 name: 'Run manually'
 
 on:
+  schedule:
+    - cron: '0 0 */3 * *'
+  watch:
+    types: started
   workflow_dispatch:
     inputs:
       exportPlatform:
