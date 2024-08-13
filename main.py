@@ -53,8 +53,12 @@ def main():
     last_sync_id = get_last_sync_id(export_platform)
     activity_list = export_platform_obj.get_activity_list()
     for activity in activity_list:
+        source = activity['origin_activity']
+        print(source['StartTimeString'], source['RideDistance'], source['RideId'], source['MovingTime'])
         if activity['ride_id'] > last_sync_id:
             fit_file = export_platform_obj.export_fit(activity['origin_activity'])
+            if not fit_file:
+                continue
             import_platform_obj.import_fit(fit_file, activity['title'])
             last_sync_id = activity['ride_id']
             set_last_sync_id(export_platform, last_sync_id)
