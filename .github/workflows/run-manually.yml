@@ -21,8 +21,8 @@ jobs:
       run: pip install -r requirements.txt
     - name: Run
       env:
-        EXPORT_PLATFORM: ${{ inputs.exportPlatform }}
-        IMPORT_PLATFORM: ${{ inputs.importPlatform }}
+        EXPORT_PLATFORM: ${{ secrets.EXPORT_PLATFORM }}
+        IMPORT_PLATFORM: ${{ secrets.IMPORT_PLATFORM }}
         IGPSPORT_USERNAME: ${{ secrets.IGPSPORT_USERNAME }}
         IGPSPORT_PASSWORD: ${{ secrets.IGPSPORT_PASSWORD }}
         IMXINGZHE_USERNAME: ${{ secrets.IMXINGZHE_USERNAME }}
